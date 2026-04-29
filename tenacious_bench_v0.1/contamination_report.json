@@ -1,0 +1,884 @@
+{
+  "train_count": 78,
+  "held_out_count": 31,
+  "ngram_check": {
+    "n": 8,
+    "violations": 0,
+    "pass": true,
+    "per_task": {
+      "TB-0098": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0123": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0143": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0040": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0135": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0088": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0147": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0041": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0002": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0072": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0115": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0057": {
+        "max_ngram_overlap": 4,
+        "violates": false,
+        "matched_train_id": "TB-0017"
+      },
+      "TB-0108": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0051": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0155": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0130": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0060": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0056": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0024": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0008": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0009": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0109": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0023": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0140": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0027": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0036": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0058": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0063": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0071": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0007": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      },
+      "TB-0029": {
+        "max_ngram_overlap": 0,
+        "violates": false,
+        "matched_train_id": null
+      }
+    }
+  },
+  "embedding_check": {
+    "threshold": 0.85,
+    "violations": 0,
+    "pass": true,
+    "note": "Similarity computed via bag-of-words approximation; production uses sentence-transformers",
+    "per_task": {
+      "TB-0098": {
+        "max_cosine_similarity": 0.3339,
+        "violates": false,
+        "matched_train_id": "TB-0092"
+      },
+      "TB-0123": {
+        "max_cosine_similarity": 0.3086,
+        "violates": false,
+        "matched_train_id": "TB-0113"
+      },
+      "TB-0143": {
+        "max_cosine_similarity": 0.2863,
+        "violates": false,
+        "matched_train_id": "TB-0086"
+      },
+      "TB-0040": {
+        "max_cosine_similarity": 0.6674,
+        "violates": false,
+        "matched_train_id": "TB-0064"
+      },
+      "TB-0135": {
+        "max_cosine_similarity": 0.5436,
+        "violates": false,
+        "matched_train_id": "TB-0070"
+      },
+      "TB-0088": {
+        "max_cosine_similarity": 0.2261,
+        "violates": false,
+        "matched_train_id": "TB-0064"
+      },
+      "TB-0147": {
+        "max_cosine_similarity": 0.275,
+        "violates": false,
+        "matched_train_id": "TB-0116"
+      },
+      "TB-0041": {
+        "max_cosine_similarity": 0.2901,
+        "violates": false,
+        "matched_train_id": "TB-0033"
+      },
+      "TB-0002": {
+        "max_cosine_similarity": 0.5128,
+        "violates": false,
+        "matched_train_id": "TB-0004"
+      },
+      "TB-0072": {
+        "max_cosine_similarity": 0.4264,
+        "violates": false,
+        "matched_train_id": "TB-0136"
+      },
+      "TB-0115": {
+        "max_cosine_similarity": 0.3344,
+        "violates": false,
+        "matched_train_id": "TB-0003"
+      },
+      "TB-0057": {
+        "max_cosine_similarity": 0.75,
+        "violates": false,
+        "matched_train_id": "TB-0017"
+      },
+      "TB-0108": {
+        "max_cosine_similarity": 0.3373,
+        "violates": false,
+        "matched_train_id": "TB-0092"
+      },
+      "TB-0051": {
+        "max_cosine_similarity": 0.4869,
+        "violates": false,
+        "matched_train_id": "TB-0052"
+      },
+      "TB-0155": {
+        "max_cosine_similarity": 0.3273,
+        "violates": false,
+        "matched_train_id": "TB-0061"
+      },
+      "TB-0130": {
+        "max_cosine_similarity": 0.4015,
+        "violates": false,
+        "matched_train_id": "TB-0039"
+      },
+      "TB-0060": {
+        "max_cosine_similarity": 0.2611,
+        "violates": false,
+        "matched_train_id": "TB-0124"
+      },
+      "TB-0056": {
+        "max_cosine_similarity": 0.4454,
+        "violates": false,
+        "matched_train_id": "TB-0001"
+      },
+      "TB-0024": {
+        "max_cosine_similarity": 0.416,
+        "violates": false,
+        "matched_train_id": "TB-0061"
+      },
+      "TB-0008": {
+        "max_cosine_similarity": 0.504,
+        "violates": false,
+        "matched_train_id": "TB-0015"
+      },
+      "TB-0009": {
+        "max_cosine_similarity": 0.3015,
+        "violates": false,
+        "matched_train_id": "TB-0004"
+      },
+      "TB-0109": {
+        "max_cosine_similarity": 0.3395,
+        "violates": false,
+        "matched_train_id": "TB-0032"
+      },
+      "TB-0023": {
+        "max_cosine_similarity": 0.3846,
+        "violates": false,
+        "matched_train_id": "TB-0077"
+      },
+      "TB-0140": {
+        "max_cosine_similarity": 0.3913,
+        "violates": false,
+        "matched_train_id": "TB-0004"
+      },
+      "TB-0027": {
+        "max_cosine_similarity": 0.4507,
+        "violates": false,
+        "matched_train_id": "TB-0054"
+      },
+      "TB-0036": {
+        "max_cosine_similarity": 0.2925,
+        "violates": false,
+        "matched_train_id": "TB-0133"
+      },
+      "TB-0058": {
+        "max_cosine_similarity": 0.2236,
+        "violates": false,
+        "matched_train_id": "TB-0039"
+      },
+      "TB-0063": {
+        "max_cosine_similarity": 0.3581,
+        "violates": false,
+        "matched_train_id": "TB-0031"
+      },
+      "TB-0071": {
+        "max_cosine_similarity": 0.3849,
+        "violates": false,
+        "matched_train_id": "TB-0032"
+      },
+      "TB-0007": {
+        "max_cosine_similarity": 0.3571,
+        "violates": false,
+        "matched_train_id": "TB-0003"
+      },
+      "TB-0029": {
+        "max_cosine_similarity": 0.4447,
+        "violates": false,
+        "matched_train_id": "TB-0031"
+      }
+    }
+  },
+  "time_shift_check": {
+    "train_violations": 0,
+    "held_out_violations": 0,
+    "pass": true,
+    "train_per_task": {
+      "TB-0118": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0050": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0039": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0019": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0149": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0065": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0087": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0127": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0134": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0107": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0139": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0031": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0083": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0018": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0113": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0152": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0001": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0075": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0125": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0066": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0101": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0148": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0092": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0003": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0020": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0128": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0079": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0129": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0116": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0061": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0153": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0136": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0004": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0126": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0054": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0033": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0097": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0015": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0144": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0053": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0043": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0028": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0095": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0102": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0064": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0090": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0110": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0099": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0017": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0105": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0068": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0055": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0026": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0077": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0070": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0062": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0076": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0084": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0137": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0037": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0089": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0124": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0067": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0073": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0052": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0133": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0005": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0093": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0145": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0042": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0156": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0141": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0131": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0100": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0142": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0086": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0032": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0111": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      }
+    },
+    "held_out_per_task": {
+      "TB-0098": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0123": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0143": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0040": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0135": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0088": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0147": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0041": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0002": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0072": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0115": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0057": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0108": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0051": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0155": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0130": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0060": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0056": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0024": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0008": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0009": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0109": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0023": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0140": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0027": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0036": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0058": {
+        "has_public_data_ref": true,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0063": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0071": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0007": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      },
+      "TB-0029": {
+        "has_public_data_ref": false,
+        "issues": [],
+        "violates": false
+      }
+    }
+  },
+  "overall_pass": true
+}

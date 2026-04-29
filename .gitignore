@@ -1,5 +1,8 @@
 # Git ignore for Week 11 benchmark work
 
+# Sealed held-out partition — never committed
+tenacious_bench_v0.1/held_out/
+
 __pycache__/
 *.pyc
 *.pkl
