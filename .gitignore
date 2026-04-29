@@ -1,0 +1,15 @@
+# Git ignore for Week 11 benchmark work
+
+__pycache__/
+*.pyc
+*.pkl
+*.ckpt
+*.pt
+*.h5
+*.log
+*.ipynb_checkpoints/
+.env
+.env.*
+secrets.json
+*.db
+.DS_Store

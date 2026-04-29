@@ -1,0 +1,7 @@
+Week 11 Tenacious bench notes and quick links.
+
+- Create dataset
+- Define rubric
+- Choose training path
+- Track costs
+- Publish to HuggingFace
