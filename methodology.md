@@ -148,3 +148,20 @@ Next steps:
 1. Inventory available Week 10 and Tenacious artifacts in the repo.
 2. Populate dataset design with exact task schema and authoring templates.
 3. Begin authoring the first 30 seeds for the benchmark.
+
+## Inter-Rater Agreement — Agreement Matrix
+
+Labeling exercise: 30 dev-partition tasks, one annotator, two blind sessions 24 h apart.
+See full analysis in `inter_rater_agreement.md`.
+
+| | Day 2 PASS | Day 2 FAIL | Row total |
+| --- | --- | --- | --- |
+| Day 1 PASS | 11 | 2 | 13 |
+| Day 1 FAIL | 3 | 14 | 17 |
+| Column total | 14 | 16 | 30 |
+
+Raw agreement: 83.3% — Cohen's κ = 0.66 (substantial agreement)
+
+F4 (Tone Drift) achieved perfect family agreement; F5 (Thread/Data Integrity) had the lowest
+family agreement at 75% (3/4), below the 80% trigger threshold — four rubric revisions
+are documented in `inter_rater_agreement.md § Implications for v0.2`.
