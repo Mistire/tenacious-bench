@@ -47,6 +47,9 @@ A domain-specific evaluation dataset for B2B sales agents operating within the T
 | [`generation_scripts/contamination_check.py`](generation_scripts/contamination_check.py) | N-gram (<8-gram overlap), BoW cosine (<0.85), and time-shift checks |
 | [`generation_scripts/partition_dataset.py`](generation_scripts/partition_dataset.py) | Merges all sources, assigns stable IDs, shuffles (seed=42), splits 50/30/20, runs contamination checks |
 | [`datasheet.md`](datasheet.md) | Dataset documentation following Gebru et al. 2021 (7 sections) |
+| [`inter_rater_agreement.md`](inter_rater_agreement.md) | 30-task double-blind labeling exercise; agreement matrix, Cohen's κ=0.66, 5 disagreement analyses with rubric fixes |
+| [`synthesis_memos/`](synthesis_memos/) | Common-reading memos: Liu et al. 2024 (synthetic data best practices), Gu et al. 2024–2025 (LLM-as-a-judge survey) |
+| [`budget_log.md`](budget_log.md) | API cost log: $0.55 total (45 calls, ~179K tokens) |
 | [`tenacious_bench_v0.1/`](tenacious_bench_v0.1/) | Generated dataset: source JSONLs, partitioned train/dev, manifest, contamination report |
 
 ## Quickstart
