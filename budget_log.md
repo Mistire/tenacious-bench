@@ -7,7 +7,8 @@ All costs in USD. API calls routed through OpenRouter.
 | 2026-04-27 | Synthesis generation | Qwen3-235B-A22B (OpenRouter) | 20 | ~60 K / ~18 K | $0.42 | Generate 20 synthesis seed tasks | 2 rejected by judge filter |
 | 2026-04-27 | Synthesis judging | DeepSeek V3-0324 (OpenRouter) | 20 | ~80 K / ~6 K | $0.11 | 3-dimension quality filter (IC, GV, RC) | Model rotation — never same family as generator |
 | 2026-04-29 | Scorer validation | DeepSeek V3-0324 (OpenRouter) | 5 | ~12 K / ~3 K | $0.02 | Manual spot-check of scoring_evaluator.py soft-dimension judge | 5 dev tasks |
-| **Total** | | | **45** | **~152 K / ~27 K** | **$0.55** | | Well inside $5 budget cap |
+| 2026-04-30 | Training data prep | DeepSeek V3-0324 (OpenRouter) | 102 | ~200 K / ~40 K | $0.08 | Generate chosen rewrites for 102 training tasks (preference pairs) | 23 pairs skipped (chosen still contained fail_pattern); 79 kept |
+| **Total** | | | **147** | **~352 K / ~67 K** | **$0.63** | | Well inside $5 budget cap |
 
 ## Notes
 

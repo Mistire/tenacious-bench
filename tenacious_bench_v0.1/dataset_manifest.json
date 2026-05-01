@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-04-29T11:57:43.479240+00:00",
+  "generated_at": "2026-05-01T07:26:32.751704+00:00",
   "seed": 42,
-  "total_tasks": 156,
+  "total_tasks": 204,
   "partitions": {
-    "train": 78,
-    "dev": 47,
-    "held_out": 31
+    "train": 102,
+    "dev": 61,
+    "held_out": 41
   },
   "by_failure_family": {
-    "F1": 46,
-    "F2": 24,
-    "F3": 31,
-    "F4": 30,
-    "F5": 25
+    "F1": 56,
+    "F2": 34,
+    "F3": 43,
+    "F4": 38,
+    "F5": 33
   },
   "by_source_mode": {
     "adversarial-hand-authored": 47,
     "multi-llm-synthesis": 18,
-    "programmatic": 55,
+    "programmatic": 103,
     "trace-derived": 36
   },
   "by_difficulty": {
     "easy": 11,
-    "hard": 88,
-    "medium": 57
+    "hard": 122,
+    "medium": 71
   },
   "train_ratio": 0.5,
   "dev_ratio": 0.3,
