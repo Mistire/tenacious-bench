@@ -1,31 +1,60 @@
+---
+license: apache-2.0
+task_categories:
+  - text-generation
+language:
+  - en
+tags:
+  - evaluation
+  - sales
+  - b2b
+  - benchmark
+  - preference-learning
+pretty_name: Tenacious-Bench v0.1
+size_categories:
+  - n<1K
+---
+
 # Tenacious-Bench v0.1
+
+**[Dataset on HuggingFace](https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1)** · **[Model Adapter](https://huggingface.co/mistire37/tenacious-bench-lora-adapter)** · **Author: Mistire Daniel**
 
 A domain-specific evaluation dataset for B2B sales agents operating within the Tenacious Intelligence Corporation workflow. Measures confidence-calibrated phrasing, ICP classification, bench capacity honesty, tone adherence, and data integrity — five failure dimensions that general-purpose benchmarks (including τ²-Bench retail) cannot grade.
 
 ## Dataset
 
-156 tasks · train/dev/held-out split · contamination CLEAN
+204 tasks · train/dev/held-out split · contamination CLEAN · Cohen's κ = 0.66
 
 | Partition | Tasks |
 | --- | --- |
-| Train | 78 |
-| Dev (public) | 47 |
-| Held-out (sealed) | 31 |
+| Train | 102 |
+| Dev (public) | 61 |
+| Held-out (sealed) | 41 |
 
 | Failure Family | Tasks |
 | --- | --- |
-| F1 — Confidence-Unaware Phrasing | 46 |
-| F2 — ICP Classification | 24 |
-| F3 — Bench Over-Commitment | 31 |
-| F4 — Tone Drift | 30 |
-| F5 — Thread / Data Integrity | 25 |
+| F1 — Confidence-Unaware Phrasing | 56 |
+| F2 — ICP Classification | 34 |
+| F3 — Bench Over-Commitment | 43 |
+| F4 — Tone Drift | 38 |
+| F5 — Thread / Data Integrity | 33 |
 
 | Source Mode | Tasks |
 | --- | --- |
-| Programmatic (parameter sweep) | 55 |
+| Programmatic (parameter sweep) | 103 |
+| Adversarial hand-authored | 47 |
 | Trace-derived (probe library) | 36 |
 | Multi-LLM synthesis (Qwen3 + DeepSeek judge) | 18 |
-| Adversarial hand-authored | 47 |
+
+## Evaluation Results (Held-out, n=41)
+
+| Condition | Pass Rate |
+| --- | --- |
+| Trained adapter (Qwen 2.5 0.5B + CPO/SimPO) | 14.6% |
+| Baseline (DeepSeek V3, no prompt) | 14.6% |
+| Prompt-engineered (DeepSeek V3, 10-rule prompt) | 48.8% |
+
+Delta A = +0.000 (p=0.585) · Delta B = −0.341 · Full results in [`ablations/ablation_results.json`](ablations/ablation_results.json)
 
 ## Act I Deliverables
 

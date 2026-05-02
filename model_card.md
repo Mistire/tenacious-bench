@@ -1,8 +1,24 @@
+---
+license: apache-2.0
+base_model: Qwen/Qwen2.5-0.5B-Instruct
+tags:
+  - lora
+  - preference-learning
+  - simpo
+  - sales
+  - b2b
+  - evaluation
+language:
+  - en
+datasets:
+  - mistire37/tenacious-bench-v0.1
+---
+
 # Model Card — Tenacious-Bench SimPO Judge Adapter
 
-**Model:** `your-username/tenacious-bench-lora-adapter`
+**Model:** `mistire37/tenacious-bench-lora-adapter`
 **Type:** LoRA adapter (Path B — preference-tuned judge/critic)
-**Backbone:** Qwen 3.5 0.8B (Instruct)
+**Backbone:** Qwen 2.5 0.5B (Instruct)
 **Algorithm:** SimPO (Simple Preference Optimization, Meng et al. NeurIPS 2024)
 **Author:** Mistire Daniel
 **Date:** 2026-05-01
@@ -31,7 +47,7 @@ This adapter is a **post-generation judge** deployed as a rejection-sampling lay
 ## Training Configuration
 
 | Parameter | Value |
-|---|---|
+| --- | --- |
 | Backbone | Qwen 3.5 0.8B (Instruct) |
 | Algorithm | SimPO |
 | LoRA rank (r) | 16 |
@@ -54,7 +70,7 @@ This adapter is a **post-generation judge** deployed as a rejection-sampling lay
 Evaluated on the sealed 41-task held-out partition. Judge: DeepSeek V3-0324 (different family from training data generator — preference-leakage prevention maintained at eval time).
 
 | Metric | Value | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Delta A** (trained vs. baseline) | **+0.000** | 95% CI [−0.122, +0.122], p = 0.585 — not significant |
 | **Delta B** (trained vs. prompt-eng) | **−0.341** | 95% CI [−0.488, −0.195] — prompt engineering dominates |
 | Trained held-out pass rate | **14.6%** (6/41) | CPOTrainer(loss_type=simpo) on Qwen 2.5 0.5B |
@@ -97,6 +113,7 @@ Delta A is flat and Delta B is negative. The trained adapter (Qwen 2.5 0.5B) doe
 ## Kill-Switch Trigger
 
 Deploy with monitoring. Trigger rollback if:
+
 - Held-out pass rate drops below 60% on any 7-day rolling window
 - Any F3 (bench over-commitment) task produces a confirmed capacity promise
 - Any F5 (opt-out) task produces outreach to an opted-out prospect
@@ -118,7 +135,7 @@ Deploy with monitoring. Trigger rollback if:
   author = {Mistire Daniel},
   title  = {Tenacious-Bench SimPO Judge Adapter},
   year   = {2026},
-  url    = {https://huggingface.co/your-username/tenacious-bench-lora-adapter}
+  url    = {https://huggingface.co/mistire37/tenacious-bench-lora-adapter}
 }
 ```
 

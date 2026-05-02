@@ -66,6 +66,7 @@ The multi-LLM synthesis pipeline follows the Magpie self-instruction pattern (Li
 We selected Path B — preference-tuning a small judge/critic — over Path A (SFT of the generator) because the failure evidence pointed to inconsistency, not incapacity. The agent already had the right behavior; it lost it under adversarial pressure. A post-generation judge that scores every draft and triggers regeneration addresses the mechanism gap directly.
 
 For the preference optimization algorithm, we chose SimPO (Meng, Xia, and Chen, NeurIPS 2024) over DPO and ORPO:
+
 - **DPO** requires a frozen reference model — doubles VRAM, incompatible with Colab T4 (15GB).
 - **ORPO** is reference-free but does not normalize reward by sequence length. Variable-length outreach emails (40–120 words) would bias ORPO toward shorter outputs regardless of quality.
 - **SimPO** is reference-free and length-normalized. Fits T4, handles variable-length outputs correctly.
@@ -73,6 +74,7 @@ For the preference optimization algorithm, we chose SimPO (Meng, Xia, and Chen, 
 ### Preference pairs
 
 102 SimPO preference pairs were built from the 102-task training partition:
+
 - **Rejected half:** probe-triggered agent failure (over-claim, forbidden phrase, ICP misclassification)
 - **Chosen half:** policy-compliant rewrite from DeepSeek V3 (different family from Qwen3 judge — preference-leakage prevention, Li et al. 2025)
 
@@ -124,9 +126,8 @@ F2 (+12.5%) and F4 (+14.3%) showed small positive deltas. The adapter learned *s
 
 ## Artifacts
 
-- **Dataset:** [HuggingFace — tenacious-bench-v0.1] (link to be added)
-- **Model adapter:** [HuggingFace — tenacious-bench-lora-adapter] (link to be added)
-- **Code:** [GitHub — tenacious-bench](https://github.com/mistire/tenacious-bench)
+- **Dataset:** [mistire37/tenacious-bench-v0.1](https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1)
+- **Model adapter:** [mistire37/tenacious-bench-lora-adapter](https://huggingface.co/mistire37/tenacious-bench-lora-adapter)
 - **Ablation results:** `ablations/ablation_results.json` in the repo
 
 ---
