@@ -51,24 +51,46 @@ This adapter is a **post-generation judge** deployed as a rejection-sampling lay
 
 ## Evaluation Results
 
-*(To be filled after Act IV ablation runs)*
+Evaluated on the sealed 41-task held-out partition. Judge: DeepSeek V3-0324 (different family from training data generator — preference-leakage prevention maintained at eval time).
 
 | Metric | Value | Notes |
 |---|---|---|
-| Delta A (trained vs. baseline) | TBD | Held-out pass rate lift, p < 0.05 required |
-| Delta B (trained vs. prompt-eng) | TBD | Tests whether training beat careful prompting |
-| Held-out pass rate | TBD | 41-task sealed slice, eval-tier judge |
-| Baseline pass rate | TBD | Same backbone, no LoRA |
+| **Delta A** (trained vs. baseline) | **+0.000** | 95% CI [−0.122, +0.122], p = 0.585 — not significant |
+| **Delta B** (trained vs. prompt-eng) | **−0.341** | 95% CI [−0.488, −0.195] — prompt engineering dominates |
+| Trained held-out pass rate | **14.6%** (6/41) | CPOTrainer(loss_type=simpo) on Qwen 2.5 0.5B |
+| Baseline pass rate | **14.6%** (6/41) | DeepSeek V3, no system prompt |
+| Prompt-eng pass rate | **48.8%** (20/41) | DeepSeek V3, 10-rule system prompt |
+
+**Per-failure-family breakdown (trained vs. baseline):**
+
+| Family | n | Trained | Baseline | Δ |
+| --- | --- | --- | --- | --- |
+| F1 — Confidence-Unaware Phrasing | 16 | 6.2% | 18.8% | −12.5% |
+| F2 — ICP Classification | 8 | 25.0% | 12.5% | +12.5% |
+| F3 — Bench Over-Commitment | 6 | 33.3% | 33.3% | 0.0% |
+| F4 — Tone Drift | 7 | 14.3% | 0.0% | +14.3% |
+| F5 — Thread/Data Integrity | 4 | 0.0% | 0.0% | 0.0% |
+
+**Honest interpretation:**
+
+Delta A is flat and Delta B is negative. The trained adapter (Qwen 2.5 0.5B) does not outperform a carefully prompted frontier model (DeepSeek V3). Three factors explain this:
+
+1. **Scale asymmetry:** The comparison pits a fine-tuned 0.5B model against a ~67B frontier model. At 0.5B, the backbone's generation quality is the binding constraint — preference training cannot compensate for limited capacity on a complex, multi-constraint task.
+2. **Role confusion:** Path B trains a judge/critic, not a generator. The correct production deployment routes baseline agent outputs *through* the trained adapter as a scoring/rejection layer — not replacing the generator. This ablation evaluated the adapter as a generator, which is not its intended role.
+3. **Training data volume:** 102 pairs on a 0.5B backbone. Per the LIMA paper, quality dominates quantity at small scale, but the task complexity here (five interacting constraint families) likely requires more diverse examples to generalize.
+
+**Production recommendation: do not deploy as a standalone generator.** Deploy as a rejection-sampling layer in front of the prompt-engineered DeepSeek pipeline — score every draft, regenerate on fail. Expected combined pass rate: higher than either component alone.
 
 ---
 
 ## Limitations
 
-1. **Domain-specific:** Trained exclusively on Tenacious-style B2B outreach. Will not generalize to other sales domains without retraining.
-2. **Small training set:** 79 preference pairs. Performance on rare failure modes (F5 timezone arithmetic, F2 acqui-hire disambiguation) may be inconsistent.
-3. **Rubric-dependent:** The adapter learns to satisfy the Tenacious-Bench v0.1 rubric. If the style guide changes, the adapter must be retrained.
-4. **No multi-turn capability:** Trained on single-turn outreach tasks. Multi-turn trajectory failures (Path C territory) are not addressed.
-5. **Held-out size:** 41 tasks limits statistical power. Delta A confidence intervals will be wide.
+1. **Scale asymmetry in ablation:** Delta A/B compare Qwen 0.5B (trained) against DeepSeek ~67B (baseline/prompt-eng). A fair comparison would hold backbone constant.
+2. **Domain-specific:** Trained exclusively on Tenacious-style B2B outreach. Will not generalize to other sales domains without retraining.
+3. **Small training set:** 102 preference pairs. Performance on rare failure modes (F5 timezone arithmetic, F2 acqui-hire disambiguation) may be inconsistent.
+4. **Rubric-dependent:** The adapter learns to satisfy the Tenacious-Bench v0.1 rubric. If the style guide changes, the adapter must be retrained.
+5. **No multi-turn capability:** Trained on single-turn outreach tasks. Multi-turn trajectory failures (Path C territory) are not addressed.
+6. **Held-out size:** 41 tasks limits statistical power. Wide confidence intervals (±12pp) make small effects undetectable.
 
 ---
 

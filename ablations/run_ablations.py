@@ -41,11 +41,11 @@ OPENROUTER_API_KEY  = os.getenv("OPENROUTER_API_KEY", "")
 ANTHROPIC_API_KEY   = os.getenv("ANTHROPIC_API_KEY", "")
 OPENROUTER_URL      = "https://openrouter.ai/api/v1/chat/completions"
 
-# Eval-tier judge for held-out scoring (Claude Sonnet 4.6 via OpenRouter)
-EVAL_JUDGE_MODEL = os.getenv("EVAL_JUDGE_MODEL", "anthropic/claude-sonnet-4-6")
+# Eval-tier judge for held-out scoring
+EVAL_JUDGE_MODEL = os.getenv("EVAL_JUDGE_MODEL", "deepseek/deepseek-chat-v3-0324")
 
-# Baseline model (same backbone as trained adapter, no LoRA)
-BASELINE_MODEL = "qwen/qwen3-0.6b"   # closest available via OpenRouter to Qwen 3.5 0.8B
+# Baseline model — generic, no Tenacious-specific training or prompting
+BASELINE_MODEL = "deepseek/deepseek-chat-v3-0324"
 
 # Prompt-engineered system prompt (careful, explicit, no training)
 PROMPT_ENG_SYSTEM = """\
@@ -163,9 +163,10 @@ def _eval_judge_score(task: dict, output: str) -> tuple[float, str]:
         return 1.0, "no soft dimensions"
 
     sd = sds[0]
+    raw_prompt = sd['judge_prompt'].replace("{output}", output)
     judge_prompt = (
         f"Agent output to evaluate:\n\"\"\"\n{output}\n\"\"\"\n\n"
-        f"{sd['judge_prompt'].format(output=output)}"
+        f"{raw_prompt}"
     )
     payload = {
         "model": EVAL_JUDGE_MODEL,

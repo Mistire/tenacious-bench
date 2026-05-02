@@ -1,0 +1,167 @@
+{
+  "generated_at": "2026-05-02T00:00:00+00:00",
+  "author": "Mistire Daniel",
+  "project": "Tenacious-Bench v0.1",
+  "description": "Every numeric claim in the memo and blog post resolves to a source listed here.",
+  "claims": [
+    {
+      "claim": "204 tasks total in Tenacious-Bench v0.1",
+      "value": 204,
+      "source_file": "tenacious_bench_v0.1/dataset_manifest.json",
+      "source_field": "total_tasks"
+    },
+    {
+      "claim": "102 train / 61 dev / 41 held-out partition",
+      "value": {"train": 102, "dev": 61, "held_out": 41},
+      "source_file": "tenacious_bench_v0.1/dataset_manifest.json",
+      "source_field": "partitions"
+    },
+    {
+      "claim": "103 programmatic tasks",
+      "value": 103,
+      "source_file": "tenacious_bench_v0.1/dataset_manifest.json",
+      "source_field": "by_source_mode.programmatic"
+    },
+    {
+      "claim": "47 adversarial hand-authored tasks",
+      "value": 47,
+      "source_file": "tenacious_bench_v0.1/dataset_manifest.json",
+      "source_field": "by_source_mode.adversarial-hand-authored"
+    },
+    {
+      "claim": "36 trace-derived tasks",
+      "value": 36,
+      "source_file": "tenacious_bench_v0.1/dataset_manifest.json",
+      "source_field": "by_source_mode.trace-derived"
+    },
+    {
+      "claim": "18 multi-LLM synthesis tasks",
+      "value": 18,
+      "source_file": "tenacious_bench_v0.1/dataset_manifest.json",
+      "source_field": "by_source_mode.multi-llm-synthesis"
+    },
+    {
+      "claim": "102 SimPO preference pairs, 0 rejected",
+      "value": 102,
+      "source_file": "training_data/preference_pairs.jsonl",
+      "note": "wc -l returns 102; preference_pairs_rejected.jsonl is empty"
+    },
+    {
+      "claim": "Contamination check: CLEAN (all 3 checks pass)",
+      "value": "CLEAN",
+      "source_file": "tenacious_bench_v0.1/contamination_report.json"
+    },
+    {
+      "claim": "Inter-rater agreement Cohen's kappa = 0.66",
+      "value": 0.66,
+      "source_file": "inter_rater_agreement.md",
+      "source_section": "Agreement matrix — Cohen's kappa"
+    },
+    {
+      "claim": "Raw agreement 83.3% (25/30 tasks)",
+      "value": {"agreements": 25, "total": 30, "percent": 83.3},
+      "source_file": "inter_rater_agreement.md",
+      "source_section": "Agreement matrix"
+    },
+    {
+      "claim": "Total API spend $0.63 for dataset authoring",
+      "value": 0.63,
+      "source_file": "budget_log.md",
+      "source_field": "Total row"
+    },
+    {
+      "claim": "Training: CPOTrainer(loss_type=simpo), Qwen 2.5 0.5B, 3 epochs",
+      "value": {"algorithm": "CPOTrainer(loss_type=simpo)", "model": "Qwen/Qwen2.5-0.5B-Instruct", "epochs": 3},
+      "source_file": "ablations/training_run.json",
+      "source_fields": ["algorithm", "model", "epochs"]
+    },
+    {
+      "claim": "Train loss 0.674 after 3 epochs",
+      "value": 0.6741449998484718,
+      "source_file": "ablations/training_run.json",
+      "source_field": "train_loss"
+    },
+    {
+      "claim": "Training runtime 101.5 seconds on Colab T4",
+      "value": 101.5,
+      "source_file": "ablations/training_run.json",
+      "source_field": "metrics.train_runtime"
+    },
+    {
+      "claim": "Delta A = +0.000, 95% CI [-0.122, +0.122], p = 0.585",
+      "value": {"delta": 0.0, "ci_low": -0.122, "ci_high": 0.122, "p_value": 0.585},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "delta_a"
+    },
+    {
+      "claim": "Delta B = -0.341, 95% CI [-0.488, -0.195]",
+      "value": {"delta": -0.341, "ci_low": -0.488, "ci_high": -0.195},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "delta_b"
+    },
+    {
+      "claim": "Trained pass rate 14.6% (6/41 tasks)",
+      "value": {"pass_rate": 0.14634, "passed": 6, "total": 41},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "delta_a.trained_pass_rate"
+    },
+    {
+      "claim": "Baseline pass rate 14.6% (6/41 tasks)",
+      "value": {"pass_rate": 0.14634, "passed": 6, "total": 41},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "delta_a.baseline_pass_rate"
+    },
+    {
+      "claim": "Prompt-eng pass rate 48.8% (20/41 tasks)",
+      "value": {"pass_rate": 0.48780, "passed": 20, "total": 41},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "delta_b.prompt_eng_pass_rate"
+    },
+    {
+      "claim": "F1 family: trained=6.2%, baseline=18.8%, delta=-12.5%, n=16",
+      "value": {"trained": 0.0625, "baseline": 0.1875, "delta": -0.125, "n": 16},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "family_breakdown.F1"
+    },
+    {
+      "claim": "F2 family: trained=25.0%, baseline=12.5%, delta=+12.5%, n=8",
+      "value": {"trained": 0.25, "baseline": 0.125, "delta": 0.125, "n": 8},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "family_breakdown.F2"
+    },
+    {
+      "claim": "F3 family: trained=33.3%, baseline=33.3%, delta=0.0%, n=6",
+      "value": {"trained": 0.333, "baseline": 0.333, "delta": 0.0, "n": 6},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "family_breakdown.F3"
+    },
+    {
+      "claim": "F4 family: trained=14.3%, baseline=0.0%, delta=+14.3%, n=7",
+      "value": {"trained": 0.143, "baseline": 0.0, "delta": 0.143, "n": 7},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "family_breakdown.F4"
+    },
+    {
+      "claim": "F5 family: trained=0.0%, baseline=0.0%, delta=0.0%, n=4",
+      "value": {"trained": 0.0, "baseline": 0.0, "delta": 0.0, "n": 4},
+      "source_file": "ablations/ablation_results.json",
+      "source_field": "family_breakdown.F5"
+    },
+    {
+      "claim": "5 τ²-Bench simulation IDs used as gap evidence (all reward 0.0)",
+      "value": ["a553180f", "ef2ad255", "0857ba6e", "19d13ac9", "58d3c8bc"],
+      "source_file": "methodology.md",
+      "source_section": "Evidence from Week 10 traces"
+    },
+    {
+      "claim": "52 probes in probe library across categories A-J",
+      "value": 52,
+      "source_file": "../../week-10/conversion-engine/probes/probe_library.md"
+    },
+    {
+      "claim": "4 synthesis memos written (common papers)",
+      "value": ["memo_gebru2021_datasheets.md", "memo_liu2024_synthetic_data.md", "memo_gu2024_llm_judge.md", "memo_chen2025_contamination.md"],
+      "source_file": "synthesis_memos/"
+    }
+  ]
+}

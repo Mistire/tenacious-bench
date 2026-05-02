@@ -1,0 +1,81 @@
+{
+  "seed": 42,
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "algorithm": "CPOTrainer(loss_type=simpo)",
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "epochs": 3,
+  "batch_size": 2,
+  "grad_accum": 4,
+  "lr": 5e-05,
+  "beta": 2.0,
+  "simpo_gamma": 0.5,
+  "train_pairs": 90,
+  "val_pairs": 11,
+  "train_loss": 0.6741449998484718,
+  "metrics": {
+    "train_runtime": 101.5024,
+    "train_samples_per_second": 2.66,
+    "train_steps_per_second": 0.355,
+    "total_flos": 0.0,
+    "train_loss": 0.6741449998484718,
+    "epoch": 3.0
+  },
+  "history": [
+    {
+      "step": 5,
+      "loss": 0.972077751159668,
+      "eval_loss": null
+    },
+    {
+      "step": 10,
+      "loss": 0.9771098136901856,
+      "eval_loss": null
+    },
+    {
+      "step": 12,
+      "loss": null,
+      "eval_loss": 0.6163351535797119
+    },
+    {
+      "step": 15,
+      "loss": 0.7844035148620605,
+      "eval_loss": null
+    },
+    {
+      "step": 20,
+      "loss": 0.6262743949890137,
+      "eval_loss": null
+    },
+    {
+      "step": 24,
+      "loss": null,
+      "eval_loss": 0.3989827334880829
+    },
+    {
+      "step": 25,
+      "loss": 0.5040470600128174,
+      "eval_loss": null
+    },
+    {
+      "step": 30,
+      "loss": 0.3654025077819824,
+      "eval_loss": null
+    },
+    {
+      "step": 35,
+      "loss": 0.49884729385375975,
+      "eval_loss": null
+    },
+    {
+      "step": 36,
+      "loss": null,
+      "eval_loss": 0.3583236038684845
+    },
+    {
+      "step": 36,
+      "loss": null,
+      "eval_loss": null
+    }
+  ]
+}

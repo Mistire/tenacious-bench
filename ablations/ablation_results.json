@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-05-01T22:59:22.505668+00:00",
+  "delta_a": {
+    "observed_delta": 0.0,
+    "ci_95_low": -0.12195121951219512,
+    "ci_95_high": 0.12195121951219512,
+    "p_value": 0.585,
+    "significant": false,
+    "n_tasks": 41,
+    "n_bootstrap": 10000,
+    "name": "Delta A: trained vs. baseline",
+    "trained_pass_rate": 0.14634146341463414,
+    "baseline_pass_rate": 0.14634146341463414
+  },
+  "delta_b": {
+    "observed_delta": -0.34146341463414637,
+    "ci_95_low": -0.4878048780487805,
+    "ci_95_high": -0.1951219512195122,
+    "p_value": 1.0,
+    "significant": false,
+    "n_tasks": 41,
+    "n_bootstrap": 10000,
+    "name": "Delta B: trained vs. prompt-engineered",
+    "trained_pass_rate": 0.14634146341463414,
+    "prompt_eng_pass_rate": 0.4878048780487805
+  },
+  "family_breakdown": {
+    "F1": {
+      "n": 16,
+      "trained_pass_rate": 0.0625,
+      "baseline_pass_rate": 0.1875,
+      "delta": -0.125
+    },
+    "F2": {
+      "n": 8,
+      "trained_pass_rate": 0.25,
+      "baseline_pass_rate": 0.125,
+      "delta": 0.125
+    },
+    "F3": {
+      "n": 6,
+      "trained_pass_rate": 0.3333333333333333,
+      "baseline_pass_rate": 0.3333333333333333,
+      "delta": 0.0
+    },
+    "F4": {
+      "n": 7,
+      "trained_pass_rate": 0.14285714285714285,
+      "baseline_pass_rate": 0.0,
+      "delta": 0.14285714285714285
+    },
+    "F5": {
+      "n": 4,
+      "trained_pass_rate": 0.0,
+      "baseline_pass_rate": 0.0,
+      "delta": 0.0
+    }
+  }
+}
