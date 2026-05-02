@@ -7,7 +7,7 @@
 
 ## HuggingFace Dataset Discussion Post
 
-**Posted to:** https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1/discussions
+**Posted to:** [huggingface.co/datasets/mistire37/tenacious-bench-v0.1/discussions/1](https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1/discussions/1)
 
 **Blog post URL:** [Substack — We Scored 0.0 on the Standard Benchmark](https://mistire1.substack.com/p/we-scored-00-on-the-standard-benchmark)
 

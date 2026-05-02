@@ -17,7 +17,7 @@ size_categories:
 
 # Tenacious-Bench v0.1
 
-**[Dataset on HuggingFace](https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1)** · **[Model Adapter](https://huggingface.co/mistire37/tenacious-bench-lora-adapter)** · **[Blog Post](https://mistire1.substack.com/p/we-scored-00-on-the-standard-benchmark)** · **Author: Mistire Daniel**
+**[Dataset on HuggingFace](https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1)** · **[Model Adapter](https://huggingface.co/mistire37/tenacious-bench-lora-adapter)** · **[Blog Post](https://mistire1.substack.com/p/we-scored-00-on-the-standard-benchmark)** · **[Community Discussion](https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1/discussions/1)** · **Author: Mistire Daniel**
 
 A domain-specific evaluation dataset for B2B sales agents operating within the Tenacious Intelligence Corporation workflow. Measures confidence-calibrated phrasing, ICP classification, bench capacity honesty, tone adherence, and data integrity — five failure dimensions that general-purpose benchmarks (including τ²-Bench retail) cannot grade.
 
