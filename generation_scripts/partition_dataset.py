@@ -29,6 +29,7 @@ from pathlib import Path
 BASE = Path(__file__).parent.parent / "tenacious_bench_v0.1"
 SOURCES = [
     BASE / "programmatic_tasks.jsonl",
+    BASE / "programmatic_expansion_tasks.jsonl",
     BASE / "trace_derived_tasks.jsonl",
     BASE / "synthesis_tasks_filtered.jsonl",
     BASE / "adversarial_tasks.jsonl",

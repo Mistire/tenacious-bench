@@ -16,3 +16,4 @@ __pycache__/
 secrets.json
 *.db
 .DS_Store
+.venv/
