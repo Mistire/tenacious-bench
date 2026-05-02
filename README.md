@@ -83,15 +83,36 @@ Delta A = +0.000 (p=0.585) · Delta B = −0.341 · Full results in [`ablations/
 
 ## Quickstart
 
+### 1. Environment setup
+
 ```bash
-# Reproduce the dataset from scratch (no API needed for programmatic + adversarial)
+# Install dependencies
+pip install -r requirements.txt
+
+# Copy the env template and fill in your keys
+cp .env.example .env    # or: cp .env .env.local and edit
+# Required keys:
+#   OPENROUTER_API_KEY   — synthesis, baseline scoring, eval judge (OpenRouter)
+#   HF_TOKEN             — HuggingFace write token (publishing only)
+# Optional:
+#   LANGFUSE_*           — observability (skip if not using Langfuse)
+```
+
+### 2. Reproduce the dataset
+
+```bash
+# No API needed for programmatic + adversarial sources:
 python3 generation_scripts/generate_programmatic.py
 python3 generation_scripts/generate_adversarial.py
-# requires OPENROUTER_API_KEY for synthesis:
+
+# Synthesis tasks require OPENROUTER_API_KEY:
 python3 generation_scripts/generate_synthesis.py --mode all --limit 20
 python3 generation_scripts/partition_dataset.py
+```
 
-# Score a task against the rubric
+### 3. Score a task against the rubric
+
+```bash
 python3 scoring_evaluator.py --skip-judge       # offline (skips LLM judge)
 python3 scoring_evaluator.py                    # full (requires OPENROUTER_API_KEY)
 ```

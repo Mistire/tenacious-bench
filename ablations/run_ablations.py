@@ -355,13 +355,17 @@ def paired_bootstrap(scores_a: list[float], scores_b: list[float],
 
 def compute_deltas(baseline_path: Path, prompt_eng_path: Path,
                    trained_path: Path) -> dict:
-    """Compute Delta A and Delta B from saved result files."""
+    """Compute Delta A, Delta B, Delta C, and cost-pareto from saved result files."""
     def load(p):
         return [json.loads(l) for l in open(p) if l.strip()]
 
-    baseline   = {r["task_id"]: r for r in load(baseline_path)}
-    prompt_eng = {r["task_id"]: r for r in load(prompt_eng_path)}
-    trained    = {r["task_id"]: r for r in load(trained_path)}
+    baseline_list   = load(baseline_path)
+    prompt_eng_list = load(prompt_eng_path)
+    trained_list    = load(trained_path)
+
+    baseline   = {r["task_id"]: r for r in baseline_list}
+    prompt_eng = {r["task_id"]: r for r in prompt_eng_list}
+    trained    = {r["task_id"]: r for r in trained_list}
 
     # Align on common task IDs
     common_ids = sorted(set(baseline) & set(trained))
@@ -384,6 +388,31 @@ def compute_deltas(baseline_path: Path, prompt_eng_path: Path,
     delta_b["trained_pass_rate"]     = sum(scores_t_b) / len(scores_t_b)
     delta_b["prompt_eng_pass_rate"]  = sum(scores_prompt) / len(scores_prompt)
 
+    # Delta C: trained vs. Week 10 τ²-Bench retail baseline (informational only).
+    # All 5 Week 10 simulation IDs scored reward 0.0 on τ²-Bench retail.
+    # Re-running τ²-Bench is out of scope per challenge spec — this reuses those scores.
+    TAU2_BENCH_PASS_RATE = 0.0
+    TAU2_BENCH_SIM_IDS = ["a553180f", "ef2ad255", "0857ba6e", "19d13ac9", "58d3c8bc"]
+    trained_pass_rate = sum(scores_trained) / len(scores_trained)
+    delta_c = {
+        "name": "Delta C: trained vs. tau2-bench retail Week 10 baseline (informational)",
+        "tau2_bench_pass_rate": TAU2_BENCH_PASS_RATE,
+        "tau2_bench_sim_ids": TAU2_BENCH_SIM_IDS,
+        "tau2_bench_note": (
+            "All 5 Week 10 simulation IDs scored reward 0.0 on tau2-bench retail. "
+            "tau2-bench measures functional task completion (did the email send?); "
+            "Tenacious-Bench measures policy-compliance failures — the gap is a domain mismatch, "
+            "not an agent failure. Re-running tau2-bench is explicitly out of scope per challenge spec."
+        ),
+        "trained_pass_rate": trained_pass_rate,
+        "observed_delta": trained_pass_rate - TAU2_BENCH_PASS_RATE,
+        "interpretation": (
+            "Delta C = +{:.3f}: Tenacious-Bench catches domain-specific failures that tau2-bench "
+            "cannot grade. This validates the benchmark gap analysis in audit_memo.md, not the "
+            "training intervention.".format(trained_pass_rate - TAU2_BENCH_PASS_RATE)
+        ),
+    }
+
     # Per-family breakdown
     families = sorted(set(trained[tid]["failure_family"] for tid in common_ids))
     family_breakdown = {}
@@ -398,11 +427,16 @@ def compute_deltas(baseline_path: Path, prompt_eng_path: Path,
             "delta": sum(t_scores) / len(t_scores) - sum(b_scores) / len(b_scores),
         }
 
+    # Cost-Pareto: per-task cost and latency metrics
+    cost_pareto = compute_cost_pareto(baseline_list, trained_list)
+
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "delta_a": delta_a,
         "delta_b": delta_b,
+        "delta_c": delta_c,
         "family_breakdown": family_breakdown,
+        "cost_pareto": cost_pareto,
     }
 
 
@@ -514,11 +548,26 @@ def main():
         print(f"  Δ = {db['observed_delta']:+.3f}  95% CI [{db['ci_95_low']:+.3f}, {db['ci_95_high']:+.3f}]")
         print(f"  p = {db['p_value']:.4f}  {'✓ significant' if db['significant'] else '✗ not significant'}")
 
+        dc = deltas["delta_c"]
+        print(f"\nDelta C (trained vs. τ²-Bench retail Week 10, informational):")
+        print(f"  τ²-Bench pass rate (Week 10): {dc['tau2_bench_pass_rate']:.1%} "
+              f"(sim IDs: {', '.join(dc['tau2_bench_sim_ids'])})")
+        print(f"  Trained pass rate:            {dc['trained_pass_rate']:.1%}")
+        print(f"  Δ = {dc['observed_delta']:+.3f}  [{dc['interpretation']}]")
+
         print(f"\nPer-family breakdown:")
         for fam, stats in deltas["family_breakdown"].items():
             print(f"  {fam}: trained={stats['trained_pass_rate']:.1%} "
                   f"baseline={stats['baseline_pass_rate']:.1%} "
                   f"Δ={stats['delta']:+.3f} (n={stats['n']})")
+
+        cp = deltas["cost_pareto"]
+        print(f"\nCost-Pareto (per-task estimates):")
+        bl_lat = f"{cp['baseline']['avg_latency_s']:.2f}s" if cp['baseline']['avg_latency_s'] else "N/A"
+        tr_lat = f"{cp['trained']['avg_latency_s']:.2f}s"  if cp['trained']['avg_latency_s']  else "N/A (Colab)"
+        print(f"  Baseline:  latency={bl_lat}  cost=${cp['baseline']['cost_per_task_usd']:.4f}/task  pass={cp['baseline']['pass_rate']:.1%}")
+        print(f"  Trained:   latency={tr_lat}  cost=${cp['trained']['cost_per_task_usd']:.4f}/task   pass={cp['trained']['pass_rate']:.1%}")
+        print(f"  Note: {cp['note']}")
 
         print(f"\nResults → {out_path}")
 

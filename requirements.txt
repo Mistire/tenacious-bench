@@ -1,0 +1,30 @@
+# Tenacious-Bench v0.1 — pinned dependencies
+# Python 3.10+ (Google Colab default as of 2026-04)
+#
+# TRAINING (Colab T4 — install in this order):
+#   pip install "unsloth_zoo>=0.0.3"
+#   pip install "unsloth[colab-new]"
+#   pip install "trl==0.22.0"
+#   pip install "datasets==3.5.0"
+#
+# SCORING / ABLATIONS (local or Colab):
+#   pip install -r requirements.txt
+
+# ── Core ML ──────────────────────────────────────────────────────────────────
+trl==0.22.0
+peft>=0.10.0
+transformers>=4.40.0
+datasets==3.5.0
+accelerate>=0.27.0
+bitsandbytes>=0.43.0
+huggingface_hub>=0.22.0
+torch>=2.1.0
+
+# ── API / scoring ────────────────────────────────────────────────────────────
+requests>=2.31.0
+
+# ── Config ───────────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0
+
+# ── Observability (optional) ─────────────────────────────────────────────────
+langfuse>=2.0.0
