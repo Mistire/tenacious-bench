@@ -9,6 +9,8 @@
 
 **Posted to:** https://huggingface.co/datasets/mistire37/tenacious-bench-v0.1/discussions
 
+**Blog post URL:** [Substack — We Scored 0.0 on the Standard Benchmark](https://mistire1.substack.com/p/we-scored-00-on-the-standard-benchmark)
+
 **Title:** Tenacious-Bench v0.1 — a domain-specific B2B sales agent evaluation dataset (feedback welcome)
 
 **Body:**
