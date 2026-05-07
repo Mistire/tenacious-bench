@@ -64,7 +64,7 @@ Path C (process reward model) is the right architecture for *trajectory* failure
 | Algorithm | CPOTrainer(loss_type="simpo") | TRL 1.x removed SimPOConfig; CPOConfig with cpo_alpha=0.0 is equivalent |
 | LoRA r | 16 | Standard for 0.5B; 32 would risk overfitting at 102 pairs |
 | LoRA alpha | 32 | 2x rank — standard Unsloth recommendation |
-| Target modules | q_proj, v_proj | Attention layers only; smaller adapter footprint |
+| Target modules | q_proj, v_proj | Unsloth default for Qwen; optimized for generation-quality tasks per LoRA paper Table 6. **Underdefended for this task:** constraint-following behavior is stored in FFN layers (gate_proj, up_proj) per Geva et al. 2021. Updating only q and v changes attention routing but cannot inject domain rules the backbone has not encoded. A more appropriate set for a rubric-scoring adapter would include o_proj, gate_proj, and up_proj — this is a v0.2 retraining target. |
 | Epochs | 3 | LIMA-scale: 3 epochs sufficient for 102 high-quality pairs |
 | β (SimPO temperature) | 2.0 | Paper's best-performing configuration for 7B; retained for 0.5B |
 | γ (SimPO margin) | 0.5 | Paper's recommendation for small datasets |

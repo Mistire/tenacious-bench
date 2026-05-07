@@ -53,7 +53,7 @@ This adapter is a **post-generation judge** deployed as a rejection-sampling lay
 | LoRA rank (r) | 16 |
 | LoRA alpha | 32 |
 | LoRA dropout | 0.05 |
-| Target modules | q_proj, v_proj |
+| Target modules | q_proj, v_proj (see note) |
 | Epochs | 3 |
 | Batch size | 2 (effective: 8 with grad accum=4) |
 | Learning rate | 5e-5 |
@@ -101,12 +101,21 @@ Delta A is flat and Delta B is negative. The trained adapter (Qwen 2.5 0.5B) doe
 
 ## Limitations
 
-1. **Scale asymmetry in ablation:** Delta A/B compare Qwen 0.5B (trained) against DeepSeek ~67B (baseline/prompt-eng). A fair comparison would hold backbone constant.
-2. **Domain-specific:** Trained exclusively on Tenacious-style B2B outreach. Will not generalize to other sales domains without retraining.
-3. **Small training set:** 102 preference pairs. Performance on rare failure modes (F5 timezone arithmetic, F2 acqui-hire disambiguation) may be inconsistent.
-4. **Rubric-dependent:** The adapter learns to satisfy the Tenacious-Bench v0.1 rubric. If the style guide changes, the adapter must be retrained.
-5. **No multi-turn capability:** Trained on single-turn outreach tasks. Multi-turn trajectory failures (Path C territory) are not addressed.
-6. **Held-out size:** 41 tasks limits statistical power. Wide confidence intervals (±12pp) make small effects undetectable.
+1. **Module selection underdefended:** `q_proj` and `v_proj` (the Unsloth default) are
+   optimized for generation-quality tasks per LoRA paper Table 6. For a constraint-following
+   rubric judge, constraint rules are stored in FFN layers (`gate_proj`, `up_proj`) per Geva
+   et al. 2021 — not in attention weights. Adapting only q and v changes attention routing
+   but cannot update the FFN rule storage. This is the most likely mechanism-level explanation
+   for why training loss fell (0.97→0.37) while held-out pass rate was unchanged (Delta A =
+   0.000). v0.2 retraining target:
+   `target_modules=["q_proj","k_proj","v_proj","o_proj","gate_proj","up_proj"]` at r=8.
+
+2. **Scale asymmetry in ablation:** Delta A/B compare Qwen 0.5B (trained) against DeepSeek ~67B (baseline/prompt-eng). A fair comparison would hold backbone constant.
+3. **Domain-specific:** Trained exclusively on Tenacious-style B2B outreach. Will not generalize to other sales domains without retraining.
+4. **Small training set:** 102 preference pairs. Performance on rare failure modes (F5 timezone arithmetic, F2 acqui-hire disambiguation) may be inconsistent.
+5. **Rubric-dependent:** The adapter learns to satisfy the Tenacious-Bench v0.1 rubric. If the style guide changes, the adapter must be retrained.
+6. **No multi-turn capability:** Trained on single-turn outreach tasks. Multi-turn trajectory failures (Path C territory) are not addressed.
+7. **Held-out size:** 41 tasks limits statistical power. Wide confidence intervals (±12pp) make small effects undetectable.
 
 ---
 
